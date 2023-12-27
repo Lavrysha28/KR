@@ -1,0 +1,34 @@
+﻿@page
+@model KR.Views.ShoppingCartModel
+
+<h2>Shopping Cart</h2>
+
+@if (Model.Items.Count == 0)
+{
+    <p>Your shopping cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <h3>Total: @Model.Items.Sum(item => item.Price)</h3>
+        <a asp-page="Checkout" class="btn btn-primary">Proceed to Checkout</a>
+    </div>
+}

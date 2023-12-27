@@ -1,0 +1,38 @@
+﻿@page
+@model IEnumerable<Product>
+
+<h2>Products</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>
+                    <form method="post" asp-action="addToCart" asp-route-id="@product.Id">
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </td>
+                    <form method="post" asp-action="addToCart" asp-route-id="@product.Id">
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<a asp-page="ShoppingCart" class="btn btn-info">View Shopping Cart</a>

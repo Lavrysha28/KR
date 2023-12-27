@@ -1,0 +1,29 @@
+﻿@page
+@model KR.Views.CheckoutModel
+
+<h2>Checkout</h2>
+
+<form method="post" asp-action="PlaceOrder">
+    <div>
+        <label for="CustomerName">Name:</label>
+        <input type="text" id="CustomerName" name="CustomerName" required />
+    </div>
+    <div>
+        <label for="CustomerEmail">Email:</label>
+        <input type="email" id="CustomerEmail" name="CustomerEmail" required />
+    </div>
+
+    <h3>Order Summary</h3>
+    <table class="table">
+        <!-- відображення елементів замовлення -->
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </table>
+
+    <button type="submit" class="btn btn-success">Place Order</button>
+</form>
